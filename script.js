@@ -3,7 +3,7 @@ const hint = "Животное";
 let selectedWord = words[Math.floor(Math.random() * words.length)];
 let guessedLetters = [];
 let wrongGuesses = 0;
-const maxWrongGuesses = 5; // Максимальное количество неправильных попыток
+const maxWrongGuesses = 5; // количество траев
 
 document.getElementById("hint").innerText = `Подсказка: ${hint}`;
 drawHangman();
@@ -63,7 +63,7 @@ function updateWordDisplay() {
 
     if (!wordDisplay.includes("_")) {
         alert("Вы угадали слово: " + selectedWord + "! Вы выиграли!");
-        resetGame(); // Сброс игры после выигрыша
+        resetGame(); // выиграл? сброс
     }
 }
 
@@ -78,7 +78,7 @@ function handleGuess(letter) {
 
         if (wrongGuesses === maxWrongGuesses) {
             alert("Вы проиграли! Загаданное слово: " + selectedWord);
-            resetGame(); // Сброс игры после проигрыша
+            resetGame(); // по идее должно сбрасывать, но честное слово не ебу
         }
     }
     updateWordDisplay();
@@ -104,6 +104,6 @@ function resetGame() {
     wrongGuesses = 0;
     drawHangman();
     updateWordDisplay();
-    document.getElementById("letters").innerHTML = ''; // Очистка кнопок
-    createLetterButtons(); // Создание новых кнопок
+    document.getElementById("letters").innerHTML = ''; 
+    createLetterButtons(); 
 }
